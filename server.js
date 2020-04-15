@@ -49,17 +49,17 @@ app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
   });
 
-    // Displays waitlist
+    // Displays reservations
 app.get("/reservations", function(req, res) {
   res.sendFile(path.join(__dirname, "reservations.html"));
   });
 
-      // Displays waitlist
+      // Displays reservations in API - json format
 app.get("/api/reservations", function(req, res) {
   res.json(reservations);
   });
 
-        // Displays waitlist
+        // Displays waitlist in API - json format
 app.get("/api/waitlist", function(req, res) {
   res.json(waitlist);
   });
@@ -74,12 +74,11 @@ app.post("/api/reservations", function(req, res) {
     if(reservations.length < 5){
       reservations.push(newCustomer);
       return res.json(true) 
-    
-    } else {
 
+    } else {
+      waitlist.push(newCustomer);
+      return res.json(false)
     }
-  
-    res.json(newCustomer);
   });
 
   
