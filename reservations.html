@@ -17,13 +17,13 @@
 
     <div class="container">
         <div class="jumbotron">
-            <div class="jumbotron" style="font-family: 'Shadows Into Light', cursive;" >
+            <div class="jumbotron" style="font-family: 'Shadows Into Light', cursive;">
                 <h1>Gyoza Garden</h1>
                 <h3>We only have 5 tables! Book your seat before they all are gone!</h3>
                 <hr>
-                <a href="/viewtables"><button class="btn btn-primary btn-lg"><span class="fa fa-plus"></span> View
+                <a href="./tables.html"><button class="btn btn-primary btn-lg"><span class="fa fa-plus"></span> View
                         Tables</button></a>
-                <a href="./home.html"><button class="btn btn-primary btn-lg">Home</button></a>
+                <a href="./home.html"><button class="btn btn-primary btn-lg"><span class="fa fa-home"></span></button></a>
             </div>
         </div>
         <div class="row">
@@ -31,7 +31,7 @@
             <div class="col-12">
 
                 <div class="card" style="font-family: 'Shadows Into Light', cursive;">
-                    <div class="card-header" >
+                    <div class="card-header">
                         <h3><strong>Request Reservation</strong></h3>
                     </div>
                     <div class="card-body">
@@ -54,7 +54,7 @@
 
                             <div class="form-group">
                                 <label for="force-points">Unique ID</label>
-                                <input type="text" class="form-control" id="uniqueid">
+                                <input type="text" class="form-control" id="uniqueId">
                             </div>
 
                         </form>
@@ -76,18 +76,18 @@
         // Question: What does this code do?
         $("#add-btn").on("click", function (event) {
             event.preventDefault();
-            var newCharacter = {
+            var newReservation = {
                 name: $("#name").val().trim(),
-                role: $("#role").val().trim(),
-                age: $("#age").val().trim(),
-                forcePoints: $("#force-points").val().trim()
+                phone: $("#phone").val().trim(),
+                email: $("#email").val().trim(),
+                uniqueId: $("#uniqueId").val().trim()
             };
 
             // Question: What does this code do??
-            $.post("/api/characters", newCharacter)
+            $.post("/api/reservations", newReservation)
                 .then(function (data) {
-                    console.log("add.html", data);
-                    alert("Adding character...");
+                    console.log("reservations.html", data);
+                    alert("Adding reservation...");
                 });
         });
     </script>
