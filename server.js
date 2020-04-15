@@ -14,7 +14,7 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var customers = [
+const reservations = [
   {
     routeName: "alvin",
     customerName: "Alvin", 
@@ -24,7 +24,7 @@ var customers = [
 }
 ];
 
-var waitlist = [
+const waitlist = [
   {
     routeName: "robyn",
     customerName: "Robyn",
@@ -45,37 +45,39 @@ app.get("/", function(req, res) {
   });
 
   // Displays all tables
-app.get("/api/tables", function(req, res) {
-    return res.json(tables);
+app.get("/tables", function(req, res) {
+  res.sendFile(path.join(__dirname, "tables.html"));
   });
 
-app.get("/api/customers/:customers", function(req, res) {
-    var chosen = req.params.customer;
-  
-    console.log(chosen);
-  
-    for (var i = 0; i < customers.length; i++) {
-      if (chosen === customers[i].routeName) {
-        return res.json(customers[i]);
-      }
-    }
-  
-    return res.json(false);
+    // Displays waitlist
+app.get("/reservations", function(req, res) {
+  res.sendFile(path.join(__dirname, "reservations.html"));
+  });
+
+      // Displays waitlist
+app.get("/api/reservations", function(req, res) {
+  res.json(reservations);
+  });
+
+        // Displays waitlist
+app.get("/api/waitlist", function(req, res) {
+  res.json(waitlist);
   });
 
   // Create New Table for WAITLIST - takes in JSON input
-app.post("/api/waitlist", function(req, res) {
+app.post("/api/reservations", function(req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     // This works because of our body parsing middleware
     var newCustomer = req.body;
   
-    // Using a RegEx Pattern to remove spaces from newCharacter
-    // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-    newCustomer.routeName = newCustomer.name.replace(/\s+/g, "").toLowerCase();
-  
     console.log(newCustomer);
-  
-    characters.push(newCustomer);
+    if(reservations.length < 5){
+      reservations.push(newCustomer);
+      return res.json(true) 
+    
+    } else {
+
+    }
   
     res.json(newCustomer);
   });
