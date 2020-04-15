@@ -14,8 +14,25 @@ var PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-var customers = [];
-var waitlist = [];
+var customers = [
+  {
+    routeName: "alvin",
+    customerName: "Alvin", 
+    phoneNumber: "(512)4204200",
+    customerEmail: "alvinIsAg@gmail.com",
+    customerID: "pwnYou69"
+}
+];
+
+var waitlist = [
+  {
+    routeName: "robyn",
+    customerName: "Robyn",
+    phoneNumber: "(512)1234567",
+    customerEmail: "robynIsCool@gmail.com",
+    customerID: "robynWaits11"
+  }
+];
 
 
 // Routes
@@ -24,7 +41,7 @@ var waitlist = [];
 // Basic route to adding a customer
 
 app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "index.html"));
+    res.sendFile(path.join(__dirname, "home.html"));
   });
 
   // Displays all tables
