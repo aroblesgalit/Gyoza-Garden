@@ -21,9 +21,9 @@
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSaufrA2hvMB9Zin6UztnAbGrenFpHoZtfTASqRqt9tULdE4xkt&usqp=CAU" alt="gyoza on plate">
             <h3>We only have 5 tables! Book your seat before they all are gone!</h3>
             <hr>
-            <a href="./tables.html"><button class="btn btn-primary btn-lg"><span class="fa fa-plus"></span> View
+            <a id="tables" href="/tables"><button class="btn btn-primary btn-lg"><span class="fa fa-plus"></span> View
                     Tables</button></a>
-            <a href="./reservations.html"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> Make
+            <a id="reservations" href="/reservations"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> Make
                     Reservations</button></a>
         </div>
         <div class="row">
@@ -49,6 +49,24 @@
             <span><a href="/api/tables">API Table Link</a>  |  <a href="/api/waitlist">API Wait List</a></span>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $("#tables").on("click", function() {
+          var pathway = $("a").attr("href");
+    
+          $.get(pathway, function(data) {
+            console.log(data);
+          });
+        });
+        $("#reservations").on("click", function() {
+          var pathway = $("a").attr("href");
+    
+          $.get(pathway, function(data) {
+            console.log(data);
+          });
+        });
+    
+      </script>
 </body>
 
 </html>
