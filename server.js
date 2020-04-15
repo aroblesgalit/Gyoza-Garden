@@ -16,21 +16,19 @@ app.use(express.json());
 
 const reservations = [
   {
-    routeName: "alvin",
-    customerName: "Alvin", 
-    phoneNumber: "(512)4204200",
-    customerEmail: "alvinIsAg@gmail.com",
-    customerID: "pwnYou69"
+    name: "Alvin", 
+    phone: "(512)4204200",
+    email: "alvinIsAg@gmail.com",
+    uniqueId: "pwnYou69"
 }
 ];
 
 const waitlist = [
   {
-    routeName: "robyn",
-    customerName: "Robyn",
-    phoneNumber: "(512)1234567",
-    customerEmail: "robynIsCool@gmail.com",
-    customerID: "robynWaits11"
+    name: "Robyn",
+    phone: "(512)1234567",
+    email: "robynIsCool@gmail.com",
+    uniqueId: "robynWaits11"
   }
 ];
 
